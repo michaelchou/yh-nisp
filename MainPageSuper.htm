@@ -1,0 +1,633 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>待机广告</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+	<script type="text/javascript" src="./js/json2.js"></script>
+	<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="./js/datatools.js"></script>
+	<script type="text/javascript" src="./js/adapter-cols.js"></script>
+	<script type="text/javascript" src="./js/CW_Error.js"></script>
+	<script type="text/javascript" src="./js/tools.js"></script>
+</head>
+<style>
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        overflow: hidden;
+		height:100%;
+		width:100%;
+    }
+    
+    #slides {
+        height: 100%;
+        width: 100%;
+    }
+    
+    #slides img {
+        margin: 0;
+        display: block;
+		width:100%;
+		height: 100%;
+    }
+	.bg{
+	  
+	 background: url(img/bg.jpg) no-repeat ;
+	 background-size:100% 100%;
+	
+	}
+	.header {
+    position: absolute;
+    width: 100%;
+    height: 6%;
+}
+.header_rightarea {
+    position: absolute;
+    width: auto;
+    right: 0;
+    top: 20px;
+    height: 80px;
+    float: right;
+}
+.time {
+    width: 54px;
+    height: 54px;
+    line-height: 54px;
+    float: left;
+    margin-top: 10px;
+    background: url(img/time1.gif) no-repeat;
+    background-size: 100% 100%;
+    color: red;
+    font-size: 2.3rem;
+    text-align: center;
+    display: inline-block;
+}
+.main {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    height: 98%;
+}
+.content {
+    position: relative; 
+    width: 90%;
+    height: 100%;
+    margin: 1% auto;
+}
+.panel {
+    position: relative;
+    width: 95%;
+    height: 82%;
+    margin: 5% auto;
+    border: 1px solid #50DBB7;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px 5px rgba(108, 165, 161, 0.5);
+    text-align: center;
+}
+.title {
+    position: relative;
+    padding-top: 3%;
+    font-size: 2.8rem;
+    text-align: center;
+    color: #008B6E;
+    letter-spacing: 3px;
+}
+
+.title:before {
+    content: "";
+    border-top: 1px solid #008B6E;
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    top: -8px;
+    left: -10px;
+}
+
+.title:after {
+    content: "";
+    border-top: 1px solid #008B6E;
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    top: -8px;
+    right: -10px;
+}
+
+.auditorC{
+	border: 0px solid #008B6E;
+	width: 60%;
+	height: 70%;
+	margin:50px auto;
+	display: flex;
+	justify-content:center;
+	align-items: center
+}
+.auditorC img{
+	width:50%;
+}
+.auditorcR{
+
+	position: absolute;
+	width:18%;
+	height: 40%;
+	display: inline-block;	
+	right:0.8%;
+	bottom: 1%;
+}
+.auditorcR img{
+	width:95%;	
+}
+</style>
+
+<body class="bg">
+	<div id="slides">
+		<img id="F1" src="" ondragstart="return false;">
+	</div>
+  <div id="curPage" style="display:none;">
+    <div>
+		<!--头部-->
+		<header class="header">
+		  <div class="header_rightarea">
+			 <div id="CountDown" class="time"></div> 
+		  </div>
+
+		</header>
+		<!--主体内容-->
+		<main class="main">
+		  <div class="content">
+			<div class="panel">
+				<div style="display:none;" id="cwdiv">
+				<p class="title">人脸比对拍照</p>   
+				<div id="cwsound" style="display:none;">
+				</div>
+				</div>
+				<div style="display:none;" id="syndiv">
+					<p class="title" id="RemoteTips">身份审核排队中，请稍候</p>
+					<div class="auditorC">
+						 <img src="img/loading.gif">
+					</div>
+					<div class="auditorcR">
+						<img id = "idc_img" src="img/审核员.png">
+					</div>
+					<div id="bg" style="display:none;">
+					</div>
+				</div>
+		     </div>
+		   </div>
+		</main>
+
+    </div> 
+  </div> 
+
+	
+	
+    
+	<object style="position:absolute;left:26.8%;top:28.2%;" id="cloudwalkwebobj" width="0px" height="0px" ></object>
+	<object style="position:absolute;left:26.8%;top:28.2%;" id="SynCardOcxwebobj" width="0px" height="0px" ></object>
+	
+	<input type="button" style="display:none;" id="Synobj" onclick="SynClick()">
+	<input type="button" style="display:none;" id="SynExitobj" onclick="SynExitClick()">
+	<input type="button" style="display:none;" id="CWobj" onclick="CWClick()">
+	<input type="button" style="display:none;" id="CWExitobj" onclick="CWExitClick()">
+	
+</body>
+
+<script type="text/javascript">
+	var imgFilePath;
+	var count = 0;
+	var interval = null;	
+	
+	var CW_nLiveNum=1;
+	var CW_nLiveLevel=2;
+	var C_FileDIR= "";
+	var bSuccess= false;
+	var bOpen= false;
+	var GD_A01_LC_SerialNo= "";
+	var GD_A01_UpUfilePram="";
+	var width = $(document).width();
+	var height = $(document).height();	
+	var CWobject = document.createElement("object");
+	var Synobject = document.createElement("object");
+
+	function UpdateAdFileList(IdleAdFileList, processAdFileList) {
+
+		imgFilePath = IdleAdFileList.split(",");
+
+	}
+
+	function enumFolders() {
+		var path = 'C:\\csap\\Nisp\\html\\AD';
+		var fso = new ActiveXObject("Scripting.FileSystemObject");
+		var fldr = fso.GetFolder(path);
+		var file = new Enumerator(fldr.files);
+		var fileArr = [];
+		for (; !file.atEnd(); file.moveNext()) {
+			var fileStr = String(file.item());
+			fileArr.push(path + '\\' + String(file.item()).substring(fileStr.lastIndexOf("\\") + 1, fileStr.length));
+		}
+		return fileArr;
+	}
+	
+
+	function changeBG() {
+		var imglist;
+		if (imgFilePath) {
+			imglist = imgFilePath;
+		} else {
+			imglist = enumFolders();
+		}
+		count++;
+		if (count < imglist.length) {
+			var ADTransName = imglist[count];
+			document.getElementById("F1").src = ADTransName;
+		} else {
+			count = 0;
+			var ADTransName = imglist[count];
+			document.getElementById("F1").src = ADTransName;
+		}
+	}		
+	
+	
+	function getParamforOcx(){
+		var xmldom = new ActiveXObject("Microsoft.XMLDOM");
+		xmldom.async = false;
+        xmldom.load('../conf/DataPool/Cols_A01_Device.xml');
+        if (xmldom.parseError != 0){
+              throw new Error("XML parsing error: " + xmldom.parseError.reason);
+        }
+		var Params = xmldom.getElementsByTagName("C_A01_Dev_MachineType");
+		var MachineType = Params[0].getAttribute("value");
+		StartBg();
+		if(MachineType == "2"){
+			CW_FaceCamInit();
+		    SynCardOcxInit();
+		} 	
+	}
+	function StartBg() {
+		if(interval == null){
+			interval = setInterval("changeBG()", 3000);			
+		}
+	}
+	
+	function StopBg() {
+		clearInterval(interval);
+		//document.getElementById("F1").src = "";
+		interval = null;	
+	}
+	
+	
+	function CWClick(){
+		CWobjectInit();
+		StopBg();	
+		$("#slides").css("display","none");	
+		$("#curPage").css("display","block");	
+		$("#cwdiv").css("display","block");	
+		$("#cwsound").html('<EMBED name="ViewSound" src="wav/请对准屏幕上的识别框.wav" Loop=false AUTOSTART=true Hidden=true MASTERSOUND></EMBED>');
+	}
+	function CWExitClick(){
+		CW_Destroy();
+		$("#cwdiv").css("display","none");
+		$("#curPage").css("display","none");			
+		$("#slides").css("display","block");
+		StartBg();
+	}
+	
+	function SynClick(){
+		StopBg();
+		$("#slides").css("display","none");	
+		$("#curPage").css("display","block");	
+		$("#syndiv").css("display","block");
+		$("#bg").html('<EMBED name="ViewSound" src="wav/正在进行身份审核，请稍后.wav" Loop=false AUTOSTART=true Hidden=true MASTERSOUND></EMBED>');
+		$("#idc_img").attr("src","img/审核员.png");
+	}
+	function SynExitClick(){
+		onVideoClosed();
+		$("#idc_img").attr("src","img/审核员.png");
+		$("#syndiv").css("display","none");
+		$("#curPage").css("display","none");			
+		$("#slides").css("display","block");
+		StartBg();
+	}
+	
+	getParamforOcx();
+	
+	//人脸识别
+
+	function CW_FaceCamInit()
+	{
+		CWobject.id = "cloudwalkobj";
+		CWobject.classid = "CLSID:B1597418-A51E-4140-8698-EE865439755C";	//IE
+	    var el = document.getElementById("cloudwalkwebobj");
+        el.appendChild(CWobject);	
+		$("#cloudwalkobj").attr('height', "0").attr('width', "0");		
+		var strJson = CWobject.cwGetConfig();
+		var jsonObj = $.parseJSON(strJson);
+		if(jsonObj != "null")
+		{
+			 var strLience = jsonObj["License"];
+			 var nret = CWobject.cwInit(strLience);	
+		}
+	}
+	
+	function CWobjectInit()
+	{
+		DataTools.get("C_A01_CameraPicFile|GD_A01_LC_SerialNo|GD_A01_UpUfilePram",function(data){
+			C_FileDIR = data[0];
+			GD_A01_LC_SerialNo = data[1];
+			GD_A01_UpUfilePram = data[2];
+			bRecv = false;
+			CW_Init();			
+		});			
+	}
+	
+	function CW_Init()
+	{
+		if(bOpen == false){
+			bOpen = true;  	
+			var strJson1 = CWobject.cwGetConfig();
+			var jsonObj1 = $.parseJSON(strJson1);
+			if(jsonObj1 != "null")
+			{
+				var strLience = jsonObj1["License"];
+				var nret = CWobject.cwInit(strLience);	
+			}		     
+			var w = width*0.436;
+			var h = height*0.5808;
+			$("#cloudwalkobj").attr('height', h.toString()).attr('width', w.toString());
+			
+			var strJson = CWobject.cwGetConfig();
+			var jsonObj = $.parseJSON(strJson);
+			if(jsonObj != "null")
+			{
+				CW_nLiveNum =  parseInt(jsonObj["LiveDetectTimes"]);
+				CW_nLiveLevel =  parseInt(jsonObj["LiveDetectLevel"]);			 
+			}else{
+				CW_UnInit();
+			}
+			var strRet = CW_startRandomLiveDetect();
+			if(strRet != ""){
+				CW_UnInit();
+			}
+		}            
+	}
+	
+	function CW_UnInit()
+	{
+		CW_Destroy();
+		if(bSuccess){
+			exitScene("STA_CONTINUE");
+		}else{
+			exitScene("STA_FAIL");
+		}                       
+	}
+	
+	function CW_Destroy()
+	{
+		if(bOpen == true){
+			bOpen = false;
+			CWobject.cwStopCamera();
+			CWobject.cwDestory();     
+			$("#cloudwalkobj").attr('height', "0").attr('width', "0");      							
+		}            
+	}
+	function LivesInfoSucc() {            
+		var recvInfo = CWobject.cwGetBestFace();
+		if(recvInfo == null || recvInfo == undefined)
+		{
+			CW_UnInit();
+			return;
+		}else{
+			var jsonObj = $.parseJSON(recvInfo);
+			var result = jsonObj["result"];
+			if(result == 0)
+			{
+				var Tempimg = jsonObj["data"];				//图片保存的所在目录
+				var filename = GD_A01_LC_SerialNo+"01.jpg";		//图片名称，如果文件名已存在则直接覆盖
+				CWobject.cwBase64ToFile(Tempimg, C_FileDIR, filename);		//Base64保存为本地图片
+				var strUfilePath = GD_A01_UpUfilePram+"|"+C_FileDIR+filename;
+				setVar("GD_A01_UpUfilePram",strUfilePath);
+				bSuccess = true;
+				CW_UnInit();                        
+			}else{
+				CW_UnInit();
+			}    
+		}
+	}
+	function LivesInfoErr(rt){
+		CW_UnInit();
+	}      
+	function CW_startRandomLiveDetect() {
+		var rotatemode=0;	//0正常、1顺时针90度、2逆时针90度
+		var nRet = CWobject.cwStartCamera(0,rotatemode);
+		var msg = "";
+		if(nRet != 0)
+		{                
+			switch(nRet)
+			{
+				case CW_ERR_CameraNotOpen:
+					msg = "摄像头未打开！";
+					break;
+				case CW_ERR_CameraOpenError:
+					msg = "摄像头打开失败！";
+					break;
+				case CW_ERR_CameraOpenAdy:
+					msg = "摄像头已经打开！";
+					break;
+				default:
+					msg = "摄像头打开失败";
+					break;
+			}
+			return msg;
+		}	
+		CWobject.cwFaceInfoStart();
+		return msg;
+	}
+	var bRecv = false;
+	function onMsgReceived(strMsg) {
+		if(bRecv == false){
+			bRecv = true;
+			var jsonobject = $.parseJSON(strMsg);	
+			if(jsonobject != "null")
+			{
+				LivesInfoSucc();
+				
+			} else{
+				LivesInfoErr(jsonobject.Result);   
+			}
+		}
+	}
+	
+	//远程审核
+
+	function SynCardOcxInit()
+	{
+		Synobject.id = "SynCardOcx1";
+		Synobject.classid = "CLSID:FD876E62-B684-45B7-B29B-32EEFBA229FD";	//IE
+	    var el = document.getElementById("SynCardOcxwebobj");
+        el.appendChild(Synobject);
+		Synobject.SetVideoSize(width*0.436, height*0.5808);
+		Synobject.SetFaceRect(200, 800, 200, 800, 255, 0, 0);
+		Synobject.SetVideoLevel(7);
+		$("#SynCardOcx1").attr('height', "0%").attr('width', "0%");
+		setTimeout(VideoInitCtrl, 500);
+	}
+	function VideoInitCtrl()
+	{
+		var str = Synobject.InitCtrl(10003);
+	}
+	
+	
+	function onVideoOpened() {
+		var w = width*0.436;
+		var h = height*0.5808;
+		$("#SynCardOcx1").attr('height', h.toString()).attr('width', w.toString());	
+		$("#RemoteTips").html("正在进行身份审核，请稍候");
+	};
+		
+	function onVideoClosed() {
+		$("#SynCardOcx1").attr('height', "0%").attr('width', "0%");
+	};
+		
+	function onSynCardOcx_MsgReceived(strMsg) {
+		if(strMsg != ""){
+			var arrstr = strMsg.split("|");
+			if(arrstr.length < 3){					
+				setVar("GD_ErrReason","RemoteRetErr");
+				exitScene("STA_FAIL");
+			}else{
+				if(arrstr.length >= 5){					
+					setVar("GD_A01_ChkUsrNum",arrstr[4]);						
+					setVar("GD_A01_BUS_NUM_UR_IDCHK",arrstr[4]);				
+				}
+				DataTools.get("GD_A01_LC_SerialNo",function(data1){
+					if(data1 == arrstr[1]){
+						if(arrstr[0] == "002")
+						{								
+							if(arrstr[2] == "0000"){
+								var arrFileDIR = "";
+								var arrNumSeqBusproc = "";
+								DataTools.get("C_FileDIR|GD_CodPid",function(data){
+									arrFileDIR = data[0];
+									var GD_CodPid = data[1];
+									arrNumSeqBusproc = arrstr[1];
+									var strPicDir=arrstr[3]+"\\"+arrNumSeqBusproc;
+									console.log('SynCardOcx_MsgReceived-on: ' + strPicDir);
+									if(GD_CodPid == "110001"){
+										//带国徽图片
+										setVar("GD_A01_Applypic1",arrFileDIR+strPicDir +"04.jpg");
+										//带人像图片
+										setVar("GD_A01_Applypic2",arrFileDIR+strPicDir +"03.jpg");
+										//联网核查图片
+										setVar("GD_A01_Applypic3",arrFileDIR+strPicDir +"02.jpg");  
+									}else{
+										//带人像图片
+										setVar("GD_A01_Applypic1",arrFileDIR+strPicDir +"02.jpg");
+										//其他1
+										setVar("GD_A01_Applypic2",arrFileDIR+strPicDir +"03.jpg");
+										//其他2
+										setVar("GD_A01_Applypic3",arrFileDIR+strPicDir +"04.jpg");  
+									}										
+									
+									setVar("GD_A01_ApplyCampicSave",arrFileDIR+strPicDir +"01.jpg");
+									var strFileDir = arrFileDIR;
+									strFileDir = strFileDir.replace(/\\\\/g,"\\");
+									strFileDir = strFileDir.replace(/\\/g,"/");
+									if(strFileDir.substr(-1) != "/")
+									{
+										strFileDir += "/";
+									}
+									strFileDir +=  (arrstr[3]+"/"+arrNumSeqBusproc+"01.jpg");
+									pageLog("Page SetValue[GD_A01_FingerShowCampic]:"+strFileDir);
+
+									setVar("GD_A01_FingerShowCampic",strFileDir);  
+									setVar("GD_UFid",arrstr[3]);
+									setVar("GD_A01_ApplyLoginFlag","1");
+									setVar("GD_A01_BUS_IDN_RST_IDCHK","1");
+
+									var date = new Date();
+									var strHours = date.getHours();
+									var strMinutes = date.getMinutes();
+									var strSeconds = date.getSeconds();
+									strHours = (strHours.length == 1) ? ("0"+strHours) : strHours;
+									strMinutes = (strMinutes.length == 1) ? ("0"+strMinutes) : strMinutes;
+									strSeconds = (strSeconds.length == 1) ? ("0"+strSeconds) : strSeconds;
+									setVar("GD_A01_BUS_TIME_END_IDCHK",strHours+strMinutes+strSeconds);
+									exitScene("STA_CONTINUE");
+								});
+							}else{
+								setVar("GD_ErrReason",arrstr[3]);
+								//alert('SynCardOcx_MsgReceived-on: SerialNo=' + arrstr[1]+',msgid='+arrstr[2]+',msg='+arrstr[3]);
+								setVar("GD_A01_BUS_TXT_RSN_IDCHK",arrstr[3]);
+								var date = new Date();
+								var strHours = date.getHours();
+								var strMinutes = date.getMinutes();
+								var strSeconds = date.getSeconds();
+								strHours = (strHours.length == 1) ? ("0"+strHours) : strHours;
+								strMinutes = (strMinutes.length == 1) ? ("0"+strMinutes) : strMinutes;
+								strSeconds = (strSeconds.length == 1) ? ("0"+strSeconds) : strSeconds;
+								setVar("GD_A01_BUS_TIME_END_IDCHK",strHours+strMinutes+strSeconds);
+								setVar("GD_A01_BUS_IDN_RST_PROC","5");
+								exitScene("STA_FAIL");
+							}
+											
+						}else if(arrstr[0] == "001"){
+							DataTools.get("C_A01_Dict_00000017",function(data){	
+								if(data != ""){						
+									var jsErrTip = JSON.parse(data);
+									var tmpStr ="";
+									for (var i = 0; i < jsErrTip.length; i++) {													
+										if (arrstr[2] == jsErrTip[i].NUM_ITEM_DIC) {
+											tmpStr = jsErrTip[i].VLU_ITEM_DIC;	
+										}
+									}
+									if(tmpStr !=""){
+										$("#bg").html('<EMBED name="ViewSound" src="wav/'+arrstr[2] + tmpStr+'.wav" Loop=false AUTOSTART=true Hidden=true MASTERSOUND></EMBED>');
+										//vm.playSound(arrstr[2] + tmpStr);
+										$("#idc_img").attr("src","img/chk/" + arrstr[2] + tmpStr + ".gif");
+									}
+								}else{
+									$("#RemoteTip").html(arrstr[2]);
+								}
+							});
+						}else{
+							var date = new Date();
+							var strHours = date.getHours();
+							var strMinutes = date.getMinutes();
+							var strSeconds = date.getSeconds();
+							strHours = (strHours.length == 1) ? ("0"+strHours) : strHours;
+							strMinutes = (strMinutes.length == 1) ? ("0"+strMinutes) : strMinutes;
+							strSeconds = (strSeconds.length == 1) ? ("0"+strSeconds) : strSeconds;
+							setVar("GD_A01_BUS_TIME_END_IDCHK",strHours+strMinutes+strSeconds);
+							setVar("GD_A01_BUS_IDN_RST_PROC","5");
+							exitScene("STA_FAIL");
+						}
+					}else{
+						pageLog("LCSerialNoNotSame err GD_A01_LC_SerialNo:"+data1 + " ,Return No:" + arrstr[1]);
+					}
+							 
+				});
+			}
+		} 
+	}
+	
+</script>
+
+
+<script language="javascript" for="SynCardOcx1" event="MsgReceived(strMsg)" type="text/javascript">
+	onSynCardOcx_MsgReceived(strMsg);
+</script>
+<script language="javascript" for="SynCardOcx1" event="VideoOpened()" type="text/javascript">
+	onVideoOpened();
+</script>
+<script language="javascript" for="SynCardOcx1" event="VideoClosed()" type="text/javascript">
+	//CWExitClick();
+</script>
+
+<script language="javascript" for="cloudwalkobj" event="cwFaceCallBack(strJson)" type="text/javascript">
+	onMsgReceived(strJson);
+</script>
+
+</html>

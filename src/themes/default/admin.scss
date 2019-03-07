@@ -1,0 +1,733 @@
+/*----------------管机员页面布局-----------------*/
+.header_bg{
+    /*background: rgba(39, 211, 187, 0.26);*/
+}
+.H_adm_info{
+    margin-right: 20px;
+    font-size: 2.5rem;
+    color: #007466;
+    vertical-align: bottom;
+}
+.location{
+    position: relative;
+    width: 98%;
+    height: 50px;
+    margin: .5% auto 0 auto;
+    padding-left: 2%;
+    /* border-bottom: 1px solid #009688; */
+    font-size: 2.3rem;
+}
+.location::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background: #009688;
+    top: 0;
+    left: 20px;
+}
+.adm_content{
+    width: 98%;
+    height: 90%;
+    margin: .5% auto;
+    border-top: 1px solid #009688;
+}
+.adm_content .center_title{
+    width: 100%;
+    text-align: center;
+    margin-top: 18%;
+    font-size: 3rem;
+    font-weight: 600;
+}
+.hsPic{
+    margin:10% auto;
+    text-align: center;
+}
+/*-----------------管机员登录-----------------*/
+.loginbox{
+    position: relative;
+    width: 55%;
+    height: 500px;
+    margin: 8% auto;
+    border: 1px solid #FFF;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0px 0px 100px 1px rgba(255, 255, 255, 0.69);
+    text-align: center;
+    font-size: 2.5rem;
+}
+.loginrow{
+    position: relative;
+    width: 80%;
+    height: 120px;
+    margin: 0 auto;
+}
+.loginbox>.loginrow:first-child{
+    margin-top: 10%;
+}
+.loginrow span{
+    display: inline-block;
+    width: 20%;
+    height: 60px;
+    text-align: right;
+    vertical-align:bottom;
+}
+.login_btn{
+    width: 25%;
+    height:60px;
+    font-size: 2.5rem;
+    color:#FFF;
+    border-radius: 4px;
+    float: right;
+    margin-right: 6.25%;
+}
+.login_err{
+    position: absolute;
+    font-size: 2.3rem;
+    color: red;
+    left: 31%;
+}
+/*-----------------管机员菜单页面-----------------*/
+.ad_bus_main{
+	position: absolute;
+    top: 8%;
+    width: 100%;
+    height: 90%;
+}
+
+.adm_second_menu{
+    width: 100%;
+    height: 60%;
+    margin: 8% auto 0 auto;
+    text-align: center;
+}
+.adm_second_menu .swiper-container{
+    height: 100%;
+}
+.adm_second_menu{
+    position: relative;
+    width: 100%;
+}
+.adm_first_menu{
+    position: relative;
+    width: 70%;
+    margin:3% auto;
+    text-align: center;
+	background:rgba(255,255,255,0.5);
+}
+.adm_second_menu .menu_imgbox{
+    width: 70%;
+}
+.adm_col{
+    margin: 0.5% 0.5%;
+}
+.adm_row{
+    width: 100%;
+    margin-bottom: 2%;
+}
+.adm_col.regularlymenu{
+    width: 12%;
+    display: inline-block;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+.adm_col.regularlymenu img{
+    display: inline-block;
+    transition-duration: .3s;
+}
+.adm_col p{
+    margin-top: 4%;
+    font-size: 2.5rem;
+    color:#333333;
+}
+.adm_menu_rail{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    bottom: -2px;
+    background: rgba(39, 211, 187, 0.56);
+    background-size: 100% 100%;
+    border-radius: 20px;
+    z-index: -1;
+}
+.larger{
+    transform:translate(0px,-10px) scale(1.1,1.1);
+    transition-duration: .3s;
+}
+/*交易成功失败提示*/
+.showreason{
+    width: 100%;
+    text-align: center;
+    margin-top: 18%;
+    font-size: 3rem;
+    font-weight: 600;
+}
+.showreason i{
+    margin-right: 2%;
+    color: #009688;
+    vertical-align: sub;
+}
+/*-----------------按钮-----------------*/
+.admbtnbox{
+    position: absolute;
+    width: 100%;
+    bottom: 14%;
+    text-align: center;
+}
+.admbtn{
+    padding: 10px 40px;
+    bottom: 5%;
+    border-radius: 10px;
+    font-size: 2.3rem;
+    color:#FFF;
+    text-align: center;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.adm_surebtn{
+    background: #1DC771;
+}
+.adm_surebtn:disabled{
+    background: rgba(29, 199, 113, 0.35);
+}
+.adm_backbtn{
+    background: #F2555C;
+}
+/*-----------------输入框-----------------*/
+.input_login{
+    width: 60%;
+    height: 60px;
+    background: #FFF;
+    border-radius: 4px;
+    font-size: 2.5rem;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.input_adm{
+    width: 55%;
+    height: 50px;
+    border:1px solid #00967D;
+    border-radius: 10px;
+    font-size: 2.5rem;
+    padding-left: 10px;
+    box-shadow:0px 0px 5px 2px rgb(71, 158, 150) inset
+}
+
+
+/*日期插件*/
+.calendar {
+    width: 320px;
+    height: 330px;
+    font-size: 2.0rem;
+}
+.calendar-modal {
+    display: none;
+    position: absolute;
+    background: rgb(254, 254, 254);
+    border: 1px solid #d2ccc4;
+}
+.calendar-inner {
+    position: relative;
+    z-index: 1;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+    -ms-transform: perspective(1000px);
+    -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+}
+.calendar-views {
+    transform-style: preserve-3d;
+}
+.calendar .view {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    *overflow: hidden;
+    -webkit-transition: .6s;
+    transition: .6s;
+}
+.calendar-d .view-month,
+.calendar-m .view-date {
+    transform: rotateY(180deg);
+    visibility: hidden;
+    z-index: 1;
+}
+.calendar-d .view-date,
+.calendar-m .view-month {
+    transform: rotateY(0deg);
+    visibility: visible;
+    z-index: 2;
+}
+.calendar-hd a{
+    width: 50%;
+    margin-left: 10px;
+}
+.calendar-hd span.m{
+    vertical-align: sub;
+}
+.calendar-ct,
+.calendar-hd,
+.calendar-views .week,
+.calendar-views .days {
+    overflow: hidden;
+}
+.calendar-views {
+    width: 100%;
+}
+.calendar .view,
+.calendar-display,
+.calendar-arrow .prev,
+.calendar .date-items li {
+    float: left;
+}
+.calendar-arrow,
+.calendar-arrow .next {
+    float: right;
+}
+.calendar-hd {
+    padding: 10px 0;
+    height: 50px;
+    line-height: 50px;
+}
+.calendar-display {
+}
+.view-month .calendar-hd {
+    padding: 10px;
+}
+.calendar-arrow,
+.calendar-display {
+    color: #ddd;
+}
+.calendar li[disabled] {
+    color: #bbb;
+}
+.calendar li.old[disabled],
+.calendar li.new[disabled] {
+    color: #eee;
+}
+.calendar-display .m{
+    display:inline-flex;
+}
+.calendar-display .m,
+.calendar-views .week,
+.calendar-views .days .old,
+.calendar-views .days .new,
+.calendar-display:hover,
+.calendar-arrow span:hover {
+    color: rgba(186, 186, 186, 1);
+}
+
+.calendar-arrow span,
+.calendar-views .days li[data-calendar-day],
+.calendar-views .view-month li[data-calendar-month] {
+    cursor: pointer;
+} 
+.calendar li[disabled] {
+    cursor: not-allowed;
+}
+.calendar-arrow {
+    display: inline-block;
+    width: 50px;
+    margin-right: 10px;
+}
+.calendar-arrow span {
+    font: 500 26px sans-serif;
+}
+.calendar ol li {
+    position: relative;
+    float: left;
+    text-align: center;
+    border-radius: 50%;
+}
+.calendar .week li,
+.calendar .days li {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+.calendar .month-items li {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+}
+.calendar .days li[data-calendar-day]:hover,
+.calendar .view-month li[data-calendar-month]:hover {
+    background: #eee; 
+}
+.calendar .calendar-views .now {
+    color: #fff;
+    background: #f44336!important;
+}
+.calendar .calendar-views .selected {
+    color: #FF808E;
+    background: #CDE9D9!important; 
+}
+.calendar .calendar-views .dot {
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    margin-left: -2px; 
+    width: 4px;
+    height: 4px;
+    background: #FF808E;
+    border-radius: 50%;
+}
+.calendar-views .now .dot {
+    background: #fff;
+}
+.calendar .date-items {
+    width: 300%;
+    margin-left: -100%;
+}
+.calendar-label {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    padding: 5px 10px;
+    line-height: 22px;
+    color: #fff;
+    background: #000;
+    border-radius: 3px;
+    opacity: .7;
+    filter: alpha(opacity=70);
+}
+.calendar-label i {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 0;
+    height: 0;
+    margin-left: -3px;
+    border: 6px solid transparent;
+    border-top-color: #000;
+}
+/*-----------------系统管理-----------------*/
+.entrybox{
+    width: 60%;
+    height: 55%;
+    margin:7% auto;
+    background: #F3FAF9;
+    border: 1px solid #999;
+    border-radius: 10px;
+    /*-webkit-box-reflect:below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white));*/
+}
+.entry{
+    display: inline-block;
+    margin-top: 10%;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+.entryL{
+    width: 40%;
+}
+.entryR{
+    width: 55%;
+}
+/*-----------------清机管理-----------------*/
+.clearbox{
+    position: relative;
+    width: 65%;
+    height: 75%;
+    margin: 3% auto;
+    background: #F3FAF9;
+    border: 1px solid #999;
+    border-radius: 10px;
+    text-align: center;
+}
+.clearbox .name{
+    width: 90%;
+    height: 10%;
+    padding: 20px 10px 3px 10px;
+    margin: 0 auto;
+    font-size: 3rem;
+    border-bottom: 1px solid #9E9E9E;
+    text-align: left;
+}
+.clearbox .name i{
+    padding-right: 10px;
+    color: #009688;
+}
+.clearUL{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    font-size: 2.5rem;
+    text-align: left;
+}
+.clearUL li{
+    height: 80px;
+    line-height: 80px;
+    border-bottom: 1px solid rgba(158, 158, 158, 0.28);
+}
+.clearUL li span{
+    display: inline-block;
+}
+.num{
+    width: 10%;
+    padding-left: 2%;
+    padding-right: 3%;
+    font-weight: 600;
+}
+.C_name{
+    width: 30%;
+}
+.l_name{
+    width: 18%;
+}
+.tip{
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    font-size: 2rem;
+    color:#F9814A;
+}
+.error{
+    position: absolute;
+    padding-left: 10px;
+    font-size: 2rem;
+    color:#F9814A;
+}
+.tip i{
+    padding-right: 10px;
+}
+/*查询*/
+.searchbox{
+    width: 100%;
+    line-height: 60px;
+    font-size: 2.3rem;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.searchbox .searblock{
+    display: inline-block;
+    line-height: 60px;
+    padding-left: .2%;
+    font-size: 2.3rem;
+    vertical-align:middle;
+}
+.selectblock{
+    width: 400px;
+
+}
+.input_search{
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    background: #F0FAFB;
+    border: 1px solid #40E7CD;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 2.2rem;
+    padding-left: 5px;
+}
+.input_trans{
+    width: 170px;
+}
+.searchbtn{
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    background: #04988a;
+    font-size: 2.3rem;
+    color: #FFF;
+    border-radius: 5px;
+}
+.resetbtn{
+    width: 120px;
+    height: 60px;
+    line-height: 60px;
+    background: #F44336;
+    font-size: 2.3rem;
+    color: #FFF;
+    border-radius: 5px;
+}
+.searchtab{
+    width: 100%;
+    margin: 0 auto;
+    font-size: 2.2rem;
+    text-align: center;
+}
+.searchtab tr{
+    height: 50px;
+}
+.searchtab thead{
+    background: rgba(0, 150, 136, 0.38);
+}
+.searchtab tbody tr:nth-child(even){
+    background: rgba(147, 219, 207, 0.32);
+}
+.page{
+    width: 100%;
+    margin:10px auto;
+    text-align: right;
+}
+.page_btn{
+    display: inline-block;
+    padding:4px 20px;
+    font-size: 2.3rem;
+    color:#FFF;
+}
+.page a.page_btn:hover{
+    /*background: #00d3c4;*/
+}
+.prePage,.nextPage,.surePage{
+    color:#FFF;
+    background: #00d3c4;
+    padding: 5px 20px;
+    font-size: 2.3rem;
+}
+.nowpage{
+    color:#FFF; 
+    background: #00d3c4;
+}
+.sumpage{
+    display: inline-block;
+    padding:4px 10px;
+    color:#333;
+    font-size: 2.3rem;
+    letter-spacing: 3px;
+}
+.pageinput{
+    width: 80px;
+    height: 30px;
+    margin: -5px 4px 0px 4px;
+    border: 1px solid #00d3c4;
+    line-height: 20px;
+    text-indent: 5px;
+    text-align: center;
+    font-size: 2.3rem;
+}
+/*设备*/
+.devicestatus{
+    width: 70%;
+    height: auto;
+    background:#F3FAF9;
+    margin: 1% auto;
+    padding: 20px;
+}
+@media screen and (max-width: 1398px) {
+	.devicestatus{
+		 width:85%;
+	}
+}
+.deviceL{
+    float: left;
+    width: 40%;
+    margin-left: 10%;
+    height: 260px;
+}
+.deviceR{
+    float: right;
+    width: 40%;
+    margin-right: 5%;
+    height: 320px;
+}
+@media screen and (max-width: 1398px) {
+	.deviceR{
+		 width:45%;
+	}
+}
+.deviceR span{
+    display: block;
+    font-size: 2.0rem;
+    margin-top: 20%;
+}
+.deviceR span:last-child{
+    margin-top: 4%;
+}
+.deviceR span i{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align:text-bottom;
+    margin-right: 10px;
+}
+.normalflag{
+    background: #08998c;
+}
+.abnormalflag{
+    background: #F44336;
+}
+.devicedetail{
+    padding-left: 10px;
+    font-size: 2.0rem;
+    font-weight: 600;
+}
+.devicetab{
+    width: 100%;
+    height: auto;
+    margin:1% auto 1% auto;
+    font-size: 2.0rem;
+    border-collapse:collapse;
+}
+.devicetab tr td{
+    height: 50px;
+    padding: 10px;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+.devicetab tr td:nth-child(even){
+    width: 18%;
+}
+.normal{
+    color:#08998c;
+}
+.abnormal{
+    color:#F44336;
+}
+.nocheck{
+    color:#FF9800;
+}
+/*管机员模态框*/
+.adm_modal{
+    position: relative;
+    width: 40%;
+    height: 500px;
+    margin: 10% auto;
+    background: #FFF;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+.adm_modal_centertitle{
+    font-size: 2.5rem;
+}
+.adm_modal_btnbox{
+    position: absolute;
+    bottom: 10%;
+    width: 95%;
+    text-align: center;
+}
+/*    ------高拍仪配置------       */
+.adm_content .hsp_title{
+    margin-top: 5%;
+}
+.work_imgbox{
+    font-size: 2rem;
+    vertical-align: middle;
+    display:inline;
+}
+.select_imgbox{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center  ;
+}
+.select_col{
+    display: inline-block;
+    position:relative;
+    margin:5%;
+    width:388px;
+    height:162px;
+}
+.hspSelected
+{
+    background-color:#79A45F;
+    transition-duration: 0.3s;
+}

@@ -1,0 +1,444 @@
+/*客户风险评估显示结果界面，是否重新评估弹框样式*/
+.bgshow{
+    background-color:rgba(100,100,100,.3);
+}
+.again_assess_more{
+    position:fixed;
+    display:none;
+    top:30%;
+    left:50%;
+    width:600px;
+    height:300px;
+    background:rgba(100,100,100,.7);
+    transform:translate(-300px,0);
+    border-radius:8px;  
+}
+.again_assess_tip{
+    height:200px;
+    line-height:200px;
+    font-size:34px;
+    letter-spacing:4px;
+    color:#FFF;    
+}
+
+
+/*转账汇款 输入转账汇款收款方账号以及转账金额 cust_Remittance_InputAccountAndAmount.html*/
+
+
+.tabRemittance .selectType{
+    width:200px;
+    height:50px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    border-radius:5px;
+    border:1px solid #000;
+    box-shadow: inset 0px 0px 10px grey;
+    background:url("../img/customer/select.png") no-repeat scroll right center transparent;
+    font-size:30px;
+    color:#6E0FFF;
+}
+.selectType{
+    width:200px;
+    height:50px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    border-radius:5px;
+    border:1px solid #000;
+    background:url("../img/customer/select.png") no-repeat scroll right center transparent;
+    font-size:30px;
+    color:#6E0FFF;
+}
+.tabRemittance .selectType_long{
+    width:315px;
+    height:50px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    border-radius:5px;
+    border:1px solid #000;
+    background:url("../img/customer/select.png") no-repeat scroll right center transparent;
+    font-size:30px;
+    color:#6E0FFF;
+}
+.selectType_long{
+    width:315px;
+    height:50px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    border-radius:5px;
+    border:1px solid #000;
+    background:url("../img/customer/select.png") no-repeat scroll right center transparent;
+    font-size:30px;
+    color:#6E0FFF;
+}
+select::-ms-expand {
+   display: none; 
+}
+#BalNotice{
+    font-size:25px;
+    color:red;
+}
+.selectWarm{
+    color:red;
+    font-size:25px;
+}
+.ClassTip{
+    margin-left:9%;
+    width:82%;
+    color:#f72e2e;
+    font-size:28px;
+    line-height:40px;
+}
+
+/*信用卡输入录入员ID*/
+.CreditSearch {
+    width: 18%;
+    height: 48px;
+    background: url(../images/search1280.png) no-repeat;
+}
+.CreditSearch {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    background: #04988a;
+    font-size: 2.3rem;
+    color: #FFF;
+    border-radius: 5px;
+}
+.CreditMethod{
+    text-align:left;
+    margin-left:5%;
+    font-size:30px;
+    margin-top:10px;
+}
+.CreditMethodBtn{
+    width:100px; 
+    height:32px;
+    line-height:32px;
+    border:1px solid #000;
+    border-radius:4px;
+    padding:0;
+    font-size: 22px;
+    margin:0 20px;
+}
+.CreditMethodBtnChoose{
+    width:130px; 
+    height:40px;
+    line-height:32px;
+    border:1px solid #000;
+    border-radius:4px;
+    padding:0;
+    font-size: 30px;
+    margin:0 20px;
+}
+.Creditinput{
+    width:200px; 
+    height: 48px;
+    font-size:30px;
+}
+
+.CreditAm,
+.CreditMe
+{
+    letter-spacing:8px;
+}
+.CreditNoteSpan{
+    letter-spacing:90px;
+}
+.CreditNoteInput{
+    border:1px solid #000;
+    border-radius:4px;
+    height:48px;
+    width:460px;
+    font-size:32px;
+}
+/*卡样*/
+.CreditMediaKind{
+    width:86%;
+    height:80%;
+    margin:20px auto;
+    display:flex;
+    justify-content:center;
+}
+.CreditMedia{
+    position:relative;
+    /*display:none;*/
+    float:left;
+    width:300px;
+    height:300px;
+    margin:60px;
+}
+.CreditMedia img{
+    max-width:90%;
+    margin:20px auto;
+}
+.CreditMedia p{
+    font-size:24px;
+    text-align:center;
+}
+.CreditMediaKind div{
+      width:200px;
+      height:200px;
+      overflow:hidden;
+} 
+.credit_col{
+    margin: 0.5% 0.5%;
+}
+.credit_row{
+    width: 100%;
+    margin-top: 5%;
+}
+.credit_col{
+    width: 15%;
+    display: inline-block;
+    margin-left: 1.0%;
+    margin-right: 1.0%;
+}
+.credit_col img{
+    display: inline-block;
+    transition-duration: .3s;
+}
+.credit_col p{
+    font-size: 2.0rem;
+    color:#333333;
+}
+.Credit_menu_imgbox {
+    height: auto;
+    margin: 5%;
+    text-align: center;
+}
+
+.Credit_menu_imgbox img {
+    width: 95%;
+}
+.CreditInfo {
+ margin-top: 3%;
+ margin-left: 5%;
+ text-align: left;
+ font-size: 2.0rem;
+}
+.CreditPic {
+    margin-top:0.5%;
+    margin-left:12%;
+}
+.CreditInfo p{
+  line-height: 2.0;
+}
+.PNVerify {
+    width: 10%;
+    height: 42px;
+    line-height: 42px;
+    background: #FFD700;
+    /* border: 1px solid #000; */
+    border-radius: 10px;
+    padding: 6px;
+    font-size: 2.0rem;
+    color: #FFF;
+    vertical-align: middle;
+}
+.ul_Creditform {
+    width: 100%;
+    margin: 1.5% auto;
+    font-size: 2.0rem;
+    color:#333333;
+}
+
+.ul_Creditform li,
+.tab_Creditform td {
+    height: 60px;
+}
+.input_Credit {
+    height: 42px;
+    padding-left: 5px;
+    border: 1px solid #10CF9E;
+    border-radius: 10px;
+    font-size: 2.0rem;
+    color:#333333;
+    margin-right: 10px;
+}
+.input_Cphone {
+    height: 42px;
+    background: rgb(249, 247, 247);
+    border: 1px solid #008B6E;
+    padding-left: 10px;
+    border-radius: 10px;
+    font-size: 2.0rem;
+}
+
+input #CPhoneNo {
+    width: 45.5%;
+}
+
+.input_Credit:disabled {
+    background: rgba(204, 204, 204, 0.23);
+}
+
+/*.CreditInfo span {
+ margin-top: 5%;
+ margin-left:5%;
+}*/
+/*常用联系人显示*/
+.Contacts{
+    position:relative;
+    width:90%;
+    height:888px;
+    text-align:center;
+    margin:104px auto;
+    background:#e7faf8;
+    border-radius:20px;
+}
+.Contacts_btnbox{
+    position: absolute;
+   /*// bottom: 10%;*/
+    width: 95%;
+    text-align:center;
+}
+.ContactsTitle{
+    position:relative;
+    width:96%;
+    height:10%;
+    margin:0 auto;
+    font-size:48px;
+    text-align: center;
+}
+.ContactsTableBox{
+    width:96%;
+    height:80%;
+	margin:0 auto;
+}
+.ContactsList{
+    width:96%;
+    font-size:40px;
+    margin:0 auto;    
+    cellspacing:0;
+    cellpadding:0;
+}
+.Contact,
+.Contacttop{
+    line-height:46px;
+    height:56px;
+    line-height:56px;
+    text-align:center;
+}
+
+.Contacttop{
+    margin:0 auto;
+    background: linear-gradient(180deg,#d2dbe0,#b7c8d2,#d2dbe0);
+}
+.ContactDelete{
+    font-size:40px;
+}
+.boxbtn{
+    margin:0 40px;
+    background: linear-gradient(180deg,#9fbcda,#95abc0,#9fbcda);
+}
+.ContactsCheckBox{
+   width:40px;
+   height:40px;
+}
+/*是否删除常用联系人*/
+.ContactDeleteBox{
+    position:fixed;
+    display:none;
+    top:30%;
+    left:50%;
+    width:600px;
+    height:300px;
+    background:rgba(100,100,100,.9);
+    transform:translate(-300px,0);
+    border-radius:8px;  
+}
+.ContactDeleteTip{
+    height:200px;
+    line-height:200px;
+    font-size:34px;
+    letter-spacing:4px;
+    color:#FFF;    
+}
+
+/*确认函*/
+.invitation{
+    text-align:left;
+    font-size:36px;
+    line-height:58px;
+    width:90%;
+    margin:20px auto;
+}
+.Remitips{
+    text-align:left;
+    font-size:46px;
+    line-height:58px;
+    color:red;
+    border:8px solid red;
+    border-radius:18px;
+    padding:10px;
+    width:90%;
+    margin:20px auto; 
+    text-indent:2em;   
+}
+
+/*请选择收款方账号类型*/
+.MediaKind{
+    width:80%;
+    height:82%;
+    margin:20px auto;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;	
+}
+.CardMedia{
+    position:relative;
+    /*display:none;*/
+    float:left;
+    width:380px;
+    height:280px;
+    top:0px;
+    margin:2px;
+    background: rgba(224,250,242,0.4);
+    margin-left:12%;
+    border:1px solid #008b6e;
+    border-radius: 10px;
+    box-shadow:0px 16px 65px -10px #999;
+}
+.CardMedia img{
+    max-width:90%;
+    margin:26px auto;
+}
+.CardMedia p{
+    font-size:3.5rem;
+    text-align:center;
+    margin-top:-10px;
+}
+.MediaKind div{
+    overflow:hidden;
+}
+@media screen and (max-height: 850px) {
+	.CardMedia {
+		width: 300px;
+		height: 220px;
+	}
+	.CardMedia img {
+	  max-width: 75%;
+	  margin: 20px auto; 
+	}	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

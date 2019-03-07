@@ -1,0 +1,48 @@
+.panel {
+    border: 1px solid #50DBB7;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px 5px rgba(108, 165, 161, 0.5);
+    background-image: url("../img/logo水印.png");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center center;
+}
+
+/* 三级联动组件 */
+.multi-level {
+    border: 1px solid #50DBB7;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px 5px rgba(108, 165, 161, 0.5);
+    background-color: #dfecee;
+    color: #666;
+}
+.level-header {
+    border-bottom: 1px solid #b7ddec;
+}
+.level-1 {
+    overflow-y: auto;
+    scrollbar-base-color: #d2e8eb;
+    border-right: 2px solid #b7ddec;
+}
+.level-2, .level-3 {
+    overflow-y: auto;
+    scrollbar-base-color: #d2e8eb;
+}
+.level-actived {
+    color: $primary !important;
+    background-color:#c7e0e8;
+}
+.level-item {
+    color: #333333;
+    border-bottom: 1px solid #c7e0e8;
+}
+.level-filter {
+    border: 1px solid #10CF9E;
+    border-radius: 10px;
+    color: #6600ff;
+}
+.mainHe{
+	border-bottom:solid 3px #79C1B8; 
+	height: 100px;
+}
+

@@ -1,0 +1,32 @@
+
+// 颜色
+$primary: #008B6E !default;
+$primary-2: #007466 !default;
+$panel-border-color: #50DBB7 !default;
+
+// 按钮
+$btn-box-shadow: rgba(18, 28, 29, 0.26) !default;
+$btn-background-linear-gradient: #5b98dd, #4b7db6, #5b97dd !default;
+
+// 输入域
+$input-border-color: #10CF9E !default;
+$input-border-color2: #009688 !default;
+$input-btn-background: #548dcd, #5188c5, #548ccc !default;  // 输入域后按钮
+
+// 表格
+$table-header-backgroud: #ccdde0, #d0f2f7, #afdade !default;
+$table-odd-background: rgba(255,255,255,0.5) !default;
+$table-even-background: rgba(201,238,243,0.5) !default;
+$table-selected-background: rgba(2,244,253,0.5) !default;
+$table-btn-background: #548dcd, #5188c5, #548ccc !default;
+
+// 字体
+$font-family: "思源黑体" !default;
+
+// 字号
+$font-size-hd: 80% !default;    /*12.8÷ 16 × 100% = 80%  默认的html的字体大小为16px，处理成12.8px*/
+$font-size-md: 62.5% !default;  /*10÷ 16 × 100% = 62.5%  默认的html的字体大小为16px，处理成10px*/
+
+// 背景
+$background-1920: linear-gradient(to top,#7ec2cc,#f7f7f7) !default;
+$background-1280: linear-gradient(to top,#7ec2cc,#f7f7f7) !default;

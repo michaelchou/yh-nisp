@@ -1,0 +1,144 @@
+<html>
+
+<head>
+    <title>FrameWork</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/C00_BRCHFEATURE.css">
+    <link rel="stylesheet" type="text/css" href="css/default.css" id="activeTheme">
+    <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.media.js"></script>
+    <script type="text/javascript" src="./js/swiper.min.js"></script>
+    <script type="text/javascript" src="./js/deleteData.js"></script>
+    <script type="text/javascript" src="./js/pagetime.js"></script>
+    <script type="text/javascript" src="./js/adapter-cols.js"></script>
+    <script type="text/javascript" src="./js/datatools.js"></script>
+    <script type="text/javascript" src="./js/tab.js"></script>
+    <script type="text/javascript" src="./js/progressBar.js"></script>
+    <script type="text/javascript" src="./js/tools.js"></script>
+    <script type="text/javascript" src="./js/M_select.js"></script>
+    <script type="text/javascript" src="./js/checkData.js"></script>
+    <script type="text/javascript" src="./js/PinyinTimeConverter.js"></script>
+    <script type="text/javascript" src="./js/echarts.common.min.js"></script>
+    <script type="text/javascript" src="./js/calendar.js"></script>
+    <script type="text/javascript" src="./js/iscroll.js"></script>
+    <script type="text/javascript" src="./js/date.js"></script>
+    <script type="text/javascript" src="./js/json2.js"></script>
+    <script type="text/javascript" src="./js/CW_Error.js"></script>
+    <script type="text/javascript" src="./js/theme.js"></script>
+    <script type="text/javascript" src="./js/MultiRecordView.js"></script>
+    <script type="text/javascript" src="./js/CWocx.js"></script>
+    <script type="text/javascript" src="./js/Synocx.js"></script>
+	<script type="text/javascript" src="./js/C00_BRCHFEATURE.js"></script>
+
+</head>
+
+<body scroll="no" class="bg" oncontextmenu="return false;" ondragstart="return false">
+    <div class="logo">
+        <img class="bank-logo" src="img/农行logo.png"></img>
+        <img class="nisp-logo" src="img/超级柜台.png"></img>
+    </div>
+    <!--子页面层-->
+    <div id="curPage">
+        <div id="vueApp"></div>
+    </div>
+    <!--当前时间-->
+    <div class="header_curtime" id="curtime"></div>
+    <!--背景声音-->
+    <bgsound id="CurBGSound" src=""></bgsound>
+    <!--
+	<OBJECT classid ="clsid:1B3EBF52-F9CF-4059-B548-2BE07D278AD2" id="PicOCX" style="width:1px; height:1px;"></OBJECT>
+	<OBJECT classid ="clsid:DC28AADF-6D21-46D3-AAB2-A3665791AEAE" id="MediaOCX" style="width:1px; height:1px;"></OBJECT>
+    -->
+    <!-- <object style="position:absolute;left:26.8%;top:25.2%;" classid="clsid:FD876E62-B684-45B7-B29B-32EEFBA229FD" id="SynCardOcx1" codeBase="SynCardOcx.CAB#version=1,0,0,1" width="0%" height="0%"></object>
+    <object style="position:absolute;left:26.8%;top:25.2%;" classid="clsid:B1597418-A51E-4140-8698-EE865439755C" id="cloudwalkobj" width="0px" height="0px"></object> -->
+	<object style="position:absolute;left:20%;top:23%;" height="0" id="PDFViewer" width="0" classid="CLSID:A086C7DF-64AB-48DE-9B13-CBDB63EF479D"></object>
+    <OBJECT ID="YHHandWrite" WIDTH=0 HEIGHT=0 CLASSID="CLSID:79388770-2A6D-4386-A66E-07E4DC47557A"></OBJECT>
+	
+	<object style="position:absolute;left:26.8%;top:25.2%;" id="cloudwalkwebobj" width="0px" height="0px" ></object>
+	<object style="position:absolute;left:26.8%;top:25.2%;" id="SynCardOcxwebobj" width="0px" height="0px" ></object>
+</body>
+<script>
+    //客户登陆状态，0-未登陆 1-已登陆
+    var loginStatus = 0;
+</script>
+<script type="text/javascript">	
+    function onReadOK2() {
+        window.location = "#ENTER";
+    }
+	
+	function onCW_FaceCam_MsgReceived(strMsg) {
+		vm.$emit('CW_FaceCam_MsgReceived', strMsg);
+	}
+	
+	function onSyn_MsgReceived(strMsg) {
+		vm.$emit('SynCardOcx_MsgReceived', strMsg);
+	}
+	
+	function onSyn_VideoOpened() {
+		vm.$emit('SynCardOcx_VideoOpened');
+	}
+	function onSyn_VideoClosed() {
+		vm.$emit('SynCardOcx_VideoClosed');
+	}
+	
+	function getParamforOcx(){
+		var xmldom = new ActiveXObject("Microsoft.XMLDOM");
+		xmldom.async = false;
+        xmldom.load('../conf/DataPool/Cols_A01_Device.xml');
+        if (xmldom.parseError != 0){
+              throw new Error("XML parsing error: " + xmldom.parseError.reason);
+        }
+		var Params = xmldom.getElementsByTagName("C_A01_Dev_MachineType");
+		var MachineType = Params[0].getAttribute("value");
+		if(MachineType != "2"){
+			CW_FaceCamInit(onCW_FaceCam_MsgReceived);
+			SynCardOcxInit(onSyn_MsgReceived,onSyn_VideoOpened,onSyn_VideoClosed);	
+		}
+	}
+
+	getParamforOcx();
+</script>
+
+<script type="text/javascript" src="./js/B01.js"></script>
+<script type="text/javascript" src="./js/B02.js"></script>
+<script type="text/javascript" src="./js/B03.js"></script>
+<script type="text/javascript" src="./js/B04.js"></script>
+<script type="text/javascript" src="./js/B05.js"></script>
+<script type="text/javascript" src="./js/B06.js"></script>
+<script type="text/javascript" src="./js/B07.js"></script>
+<script type="text/javascript" src="./js/B08.js"></script>
+<script type="text/javascript" src="./js/B09.js"></script>
+<script type="text/javascript" src="./js/B10.js"></script>
+<script type="text/javascript" src="./js/B11.js"></script>
+<script type="text/javascript" src="./js/B12.js"></script>
+<script type="text/javascript" src="./js/B14.js"></script>
+<script type="text/javascript" src="./js/B15.js"></script>
+<script type="text/javascript" src="./js/D01.js"></script>
+<script type="text/javascript" src="./js/vendor.js"></script>
+<script type="text/javascript" src="./js/C00.js"></script>
+
+<script type="text/javascript" src="./js/C10_00GG.js"></script>
+<script type="text/javascript" src="./js/C10_01XJ.js"></script>
+<script type="text/javascript" src="./js/C10_02CD.js"></script>
+<script type="text/javascript" src="./js/C10_03TS.js"></script>
+<script type="text/javascript" src="./js/C10_04ZZ.js"></script>
+<script type="text/javascript" src="./js/C10_05DY.js"></script>
+<script type="text/javascript" src="./js/C10_06LC.js"></script>
+<script type="text/javascript" src="./js/C10_07JJ.js"></script>
+<script type="text/javascript" src="./js/C10_08XY.js"></script>
+<script type="text/javascript" src="./js/C10_09JF.js"></script>
+<script type="text/javascript" src="./js/C10_10KK.js"></script>
+<script type="text/javascript" src="./js/C10_99GL.js"></script>
+
+<script type="text/javascript" src="./js/C00_01.js"></script>
+<script type="text/javascript" src="./js/C00_02.js"></script>
+<script type="text/javascript" src="./js/C00_03.js"></script>
+<script type="text/javascript" src="./js/C00_04.js"></script>
+<script type="text/javascript" src="./js/C00_05.js"></script>
+
+<script type="text/javascript" src="./js/bundle.js"></script>
+
+</html>

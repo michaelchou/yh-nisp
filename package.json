@@ -1,0 +1,50 @@
+{
+  "name": "A01-html",
+  "version": "1.0.0",
+  "description": "ABC SuperTeller",
+  "author": "yantao <yantao@yihuacomputer.com>",
+  "private": true,
+  "scripts": {
+    "build:vendor": "browserify -o js/vendor.js -r vue -r vuex",
+    "build": "browserify --debug -t babelify -t vueify -e src/main.js -o js/bundle.js -x vue -x vuex",
+    "watch": "watchify --debug -t babelify -t vueify -e src/main.js -o js/bundle.js -v -x vue -x vuex",
+    "release": "cp js/bundle.js ../../../Run/Setup/AP/csap/Nisp/html/js",
+    "br": "npm run build && npm run release",
+    "theme:initial": "node-sass src/themes/initial/_all.scss css/default.css",
+    "theme:default": "node-sass src/themes/default/_all.scss themes/default/css/default.css",
+    "theme:autumn": "node-sass src/themes/autumn/_all.scss themes/autumn/css/autumn.css",
+    "theme": "npm run theme:default && npm run theme:autumn",
+    "theme:default_sm": "node-sass src/themes/default/_all_sm.scss themes/default/css/default_sm.css",
+    "theme:autumn_sm": "node-sass src/themes/autumn/_all_sm.scss themes/autumn/css/autumn_sm.css",
+    "theme_sm": "npm run theme:default_sm && npm run theme:autumn_sm",
+    "rel:theme": "npm run theme && npm run theme_sm && cp -r themes ../../../Run/Setup/AP/csap/Nisp/html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "buefy": "^0.5.2",
+    "sassify": "^2.0.0",
+    "vue": "^2.3.3",
+    "vue-awesome-swiper": "^2.6.4",
+    "vue-echarts-v3": "^1.0.5",
+    "vue-i18n": "^7.2.0",
+    "vue-router": "^2.3.1",
+    "vueify": "^9.4.1",
+    "vuex": "^2.3.1",
+    "watchify": "^3.9.0"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

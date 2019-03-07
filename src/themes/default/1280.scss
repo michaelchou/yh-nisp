@@ -1,0 +1,83 @@
+﻿@media (max-width: 1398px) {
+
+    html{
+        font-size: $font-size-md; /*10÷ 16 × 100% = 62.5%  默认的html的字体大小为16px，处理成10px*/
+    }
+    
+    /* 背景图片*/
+    .bg {
+       background: $background-1280;
+    }
+    /* 主菜单 */
+    .made_menu .menu_imgbox {
+        width: 90%;
+        
+    }
+    .made_menu .menu_imgbox {
+        margin: 10% auto;
+    }
+    .made_menu .menu_imgbox .col {
+      
+        margin: 1.1% 2%;
+    
+    }
+    .regularly_menu {
+        width: 90.4%;
+    
+    }
+    .clear{
+        background: url("../img/菜单条_1280.png") no-repeat;
+    }
+    .regularly_menu .swiper-container {
+        width: 100%;
+    }
+    .regularly_menu .swiper-slide {
+        width: 100%;  
+    }
+    .regularly_menu .swiper-container {
+        left: 240px;
+    }
+    .regularly_menu_logo {
+        left: 150px;
+    }
+    .regularly_menu .menu_imgbox .col {
+    
+        width: 13%;
+        margin: 1% 1%; 
+        /*一级菜单图标位置*/
+    }
+    
+    .regularly_menu_left {
+     
+        left: 10px;
+        bottom: 40px;
+    }
+    .regularly_menu_right {
+    
+        right: 50px;
+        bottom: 40px;
+    }
+    .content {
+        width: 86%;
+        margin: 1% 7% 0% 7%;
+    }
+    .input_Pin {
+        width: 360px;
+    }
+    .infohalf span:first-child,.infoall span:first-child{
+        width: 160px;
+    }
+    .infohalf i {
+        width: 150px;
+    }
+    .panel {
+    
+        width: 100%;
+    
+    }
+    .tabRemittance{
+        width: 80%;
+    }
+    
+    
+}

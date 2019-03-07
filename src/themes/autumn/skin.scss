@@ -1,0 +1,80 @@
+.main {
+    border-top: 3px solid #aa622c;
+    background: url("../img/bg(2).png") no-repeat;
+    background-size: cover;
+}
+
+.panel {
+    border: 1px solid rgba(256, 256, 256, 0.6);
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px 5px rgba(156, 161, 161, 0.5);
+    background-color: rgba(256, 256, 256, 0.7);
+}
+
+/* 三级联动组件 */
+.multi-level {
+    border: 1px solid #dfecee;
+    border-radius: 20px;
+    background-color: #fefefe;
+    color: #666;
+}
+.level-header {
+    border-bottom: 1px solid $primary;
+}
+.level-1 {
+    overflow-y: auto;
+    scrollbar-base-color: #ecc775;
+    border-right: 2px solid $primary;
+}
+.level-2, .level-3 {
+    overflow-y: auto;
+    scrollbar-base-color: #ecc775;
+}
+.level-actived {
+    color: $primary !important;
+    background-color:#dddddd;
+}
+.level-item {
+    color: #333333;
+    border-bottom: 1px solid #dddddd;
+}
+.level-filter {
+    border: 1px solid $primary;
+    border-radius: 10px;
+    color: #6600ff;
+}
+ .bus_main {
+	position: absolute;
+	top: 9.5%;
+	width: 100%;
+	height: 88%; 
+  }
+ .made_menu {
+	border-bottom:3px solid #aa622c; 
+	border-top:3px solid #aa622c;
+	background:url("../img/bg(2).png") no-repeat;
+	background-size:100% 100%;
+  }
+.mainHe{
+	height: 100px;
+}
+.made_menu .swiper-container {
+	width: 85%;
+	height: 85%;
+	background:rgba(255,255,255,0.6);
+	margin-top:2.5%;
+}
+
+.made_menu .menu_imgbox {
+	margin: 2% auto;
+}
+.made_menu .menu_imgbox .col {
+		margin: 1.1% 1.2%; 
+	}
+ 
+ @media (max-width: 1305px) {
+	.made_menu .menu_imgbox .col {
+		margin: 1.1% 0.1%; 
+	}
+ }
+

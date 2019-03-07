@@ -1,0 +1,39 @@
+公共页面
+cust_com_SelectDocumentType.html              ---选择证件类型
+cust_com_InsertOtherDocumentInfo.html         ---录入其他证件资料
+cust_com_SeatVerify.html                      ---后台审核身份
+cust_com_PrintReceipt.html                    ---正在打印凭条提示
+cust_com_PinError.html                        ---密码错误次数超额提示
+cust_com_OperateTimeout.html                  ---交易、操作超时提示
+cust_com_NetCheck.html                        ---联网核查
+cust_com_IsPrintReceipt.html                  ---是否打印凭条
+cust_com_InputPassword.html                   ---第一次输入密码
+cust_com_InputPasswordAgain.html              ---第二次输入密码
+cust_com_InputPasswordError.html              ---密码错误提示（非三次）
+cust_com_InputDocumentInfo.html               ---输入证件信息（证件类型、证件号码、姓名）
+cust_com_InputCard.html                       ---插入银行卡提示
+cust_com_TakeCard.html                        ---取走银行卡提示
+cust_com_IDRead.html                          ---读取证件信息提示
+cust_com_IDout.html			      ---取走证件（身份证需要两个，失败与成功）
+cust_com_IDin.html                            ---刷证件
+cust_com_VerifyIdentity.html                  ---审核员审核
+cust_com_SeatVerify.html                      ---坐席审核（即后台审核身份）
+cust_com_Trading.html                         ---交易进行中提示
+cust_com_TradeSuccess.html                    ---交易成功提示
+cust_com_TradeFailed.html                     ---交易失败提示                     
+cust_com_TakeReceipt.html                     ---取走凭条提示
+cust_com_TakeIDPhoto.html                     ---高拍仪拍摄证件
+cust_com_Sign.html                            ---（申请书签名）电子签名
+cust_com_FingerDistinguish.html               ---审核员录入指纹
+cust_com_AuditorVerifyID.html                 ---审核员选择Or输入指纹编号
+cust_com_ShowSignResult.html                  ---（申请书签名）展示申请书及签名结果
+
+cust_com_ShowApplication.html                 ---（申请书签名）展示申请书及提示
+cust_com_PrintApplication.html                ---打印申请书
+cust_com_TakeApplication.html                 ---取走申请书
+cust_com_PutApplication.html                  ---放入申请书
+cust_com_CitySelector.html					  ---（城市选择器）省市区三级联动选择
+cust_com_IDFailTip.html                       --- 身份证读取失败是否重新读取提示弹框
+cust_com_CardFailTip.html                     --- 银行卡读取失败是否重新读取提示弹框
+cust_com_TradeFinishTip.html                  --- 是否结束交易提示弹框
+cust_com_VertifyBusyTip.html                  ---人脸审核繁忙提示弹框
